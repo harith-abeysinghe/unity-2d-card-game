@@ -4,25 +4,53 @@ using UnityEngine;
 
 public class DragDrop : MonoBehaviour
 {
+    private bool isDragging = false;
+    private Vector2 startPosition;
+    private GameObject currentBoard;
 
-    bool isDragging = false;
-    Vector2 startPosition;
-
-    // Update is called once per frame
     void Update()
     {
-        if(isDragging){
-            transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        if (isDragging)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            transform.position = mousePosition;
         }
     }
 
-    public void StartDrag(){
+    public void StartDrag()
+    {
         startPosition = transform.position;
         isDragging = true;
     }
 
-    public void StopDrag(){
+    public void EndDrag()
+    {
         isDragging = false;
 
+        if (currentBoard != null)
+        {
+            transform.SetParent(currentBoard.transform, false);
+        }
+        else
+        {
+            transform.position = startPosition;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Board"))
+        {
+            currentBoard = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Board"))
+        {
+            currentBoard = null;
+        }
     }
 }
