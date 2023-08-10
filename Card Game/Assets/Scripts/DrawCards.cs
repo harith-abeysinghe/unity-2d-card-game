@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawCards : MonoBehaviour
 {
-    public GameObject Card1, Card2;
+    public GameObject Card1;
     public GameObject PlayerArea, OpponentArea, Board;
     float cardSpawnDelay = 1.0f;
 
@@ -14,7 +14,7 @@ public class DrawCards : MonoBehaviour
     void Start()
     {
         cards.Add(Card1);
-        cards.Add(Card2);
+        
     }
 
     public void OnClick()
@@ -26,7 +26,7 @@ public class DrawCards : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            GameObject playerCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject playerCard = Instantiate(cards[0], new Vector3(0, 0, 0), Quaternion.identity);
             playerCard.transform.SetParent(PlayerArea.transform, false);
 
             
@@ -35,14 +35,14 @@ public class DrawCards : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            GameObject boardCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject boardCard = Instantiate(cards[0], new Vector3(0, 0, 0), Quaternion.identity);
             boardCard.transform.SetParent(Board.transform, false);
 
             
         }   
             yield return new WaitForSeconds(cardSpawnDelay);
         for (int i = 0; i < 2; i++){
-            GameObject opponentCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject opponentCard = Instantiate(cards[0], new Vector3(0, 0, 0), Quaternion.identity);
             opponentCard.transform.SetParent(OpponentArea.transform, false);
             
             
