@@ -16,7 +16,7 @@ public class DrawCards : MonoBehaviour
     List <GameObject> cards = new List <GameObject> ();
     private int speed;
 
-    public bool player1_turn = false;
+    public int player1_turn = 0;
     public GameObject[] backs;
     public bool clicked = false;
     public int all_cards;
@@ -39,13 +39,13 @@ public class DrawCards : MonoBehaviour
             int current = OpponentArea[0].transform.childCount + OpponentArea[1].transform.childCount + OpponentArea[2].transform.childCount + OpponentArea[3].transform.childCount+ PlayerArea[0].transform.childCount + PlayerArea[1].transform.childCount + PlayerArea[2].transform.childCount + PlayerArea[3].transform.childCount;
             if (current < all_cards)
             {
-                if (player1_turn)
+                if (player1_turn == 1|| player1_turn == 0)
                 {
-                    player1_turn = false;
+                    player1_turn = 2;
                 }
-                else
+                else if(player1_turn == 2|| player1_turn == 0)
                 {
-                    player1_turn = true;
+                    player1_turn = 1;
                 }
               
             }
@@ -59,15 +59,20 @@ public class DrawCards : MonoBehaviour
            
             clicked = true;
         }
-        if (player1_turn == true)
+        if (player1_turn == 1)
         {
             backs[0].SetActive(false);
             backs[1].SetActive(true);
         }
-        else
+        else if(player1_turn == 2)
         {
             backs[1].SetActive(false);
             backs[0].SetActive(true);
+        }
+        else
+        {
+            backs[1].SetActive(false);
+            backs[0].SetActive(false);
         }
     }
     public void MergeSprites(int _num, GameObject card)
@@ -150,6 +155,7 @@ public class DrawCards : MonoBehaviour
             playerCard.transform.SetParent(PlayerArea[i].transform, false);
             MergeSprites(num, playerCard);
         }
+        player1_turn = 2;
         yield return new WaitForSeconds(cardSpawnDelay);
 
         for (int i = 0; i < 4; i++)
