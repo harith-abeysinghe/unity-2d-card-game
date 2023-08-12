@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 2742971610701643857}
   - component: {fileID: 4625595644058098481}
   - component: {fileID: 4999010901245453458}
-  - component: {fileID: -8213920066614776116}
-  - component: {fileID: 5940137113580418057}
-  - component: {fileID: 7748958943632646848}
-  - component: {fileID: 5299287257127686929}
-  - component: {fileID: 2241951435552375205}
+  - component: {fileID: -6346854099043635228}
+  - component: {fileID: 8921037655001168244}
+  - component: {fileID: -5513318218604487943}
+  - component: {fileID: 3287143692502723935}
+  - component: {fileID: 4552995480635656574}
   m_Layer: 6
-  m_Name: Card 1
+  m_Name: Card 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 72.86, y: -0.14}
+  m_AnchoredPosition: {x: 72.99996, y: 0}
   m_SizeDelta: {x: 50, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4625595644058098481
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-8213920066614776116
+--- !u!114 &-6346854099043635228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   value: 0
   location: 0
   img: {fileID: 0}
---- !u!114 &5940137113580418057
+--- !u!114 &8921037655001168244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -8213920066614776116}
+        - m_Target: {fileID: -6346854099043635228}
           m_TargetAssemblyTypeName: DragDrop, Assembly-CSharp
           m_MethodName: StartDrag
           m_Mode: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -8213920066614776116}
+        - m_Target: {fileID: -6346854099043635228}
           m_TargetAssemblyTypeName: DragDrop, Assembly-CSharp
           m_MethodName: EndDrag
           m_Mode: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!61 &7748958943632646848
+--- !u!61 &-5513318218604487943
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,17 +176,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.44}
-    newSize: {x: 1, y: 1.44}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 55, y: 75}
   m_EdgeRadius: 0
---- !u!50 &5299287257127686929
+--- !u!50 &3287143692502723935
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!114 &2241951435552375205
+--- !u!114 &4552995480635656574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
