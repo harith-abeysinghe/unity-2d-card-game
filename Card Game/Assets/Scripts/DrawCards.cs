@@ -15,6 +15,11 @@ public class DrawCards : MonoBehaviour
     public List<int> _clubs, _diamonds, _hearts, _spades;  // all shared cards
     List <GameObject> cards = new List <GameObject> ();
     private int speed;
+
+    public bool player1_turn = false;
+    public GameObject[] backs;
+    public bool clicked = false;
+    public int all_cards;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +30,45 @@ public class DrawCards : MonoBehaviour
         }
 
     }
-
+    
     private void Update()
     {
-      
+        if (Input.GetMouseButtonUp(0))
+        {
+            clicked = false;
+            int current = OpponentArea[0].transform.childCount + OpponentArea[1].transform.childCount + OpponentArea[2].transform.childCount + OpponentArea[3].transform.childCount+ PlayerArea[0].transform.childCount + PlayerArea[1].transform.childCount + PlayerArea[2].transform.childCount + PlayerArea[3].transform.childCount;
+            if (current < all_cards)
+            {
+                if (player1_turn)
+                {
+                    player1_turn = false;
+                }
+                else
+                {
+                    player1_turn = true;
+                }
+              
+            }
+           
+            all_cards = current;
+            //GameObject.Find("pack").GetComponent<DrawCards>().last[0] = value;
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            all_cards = OpponentArea[0].transform.childCount + OpponentArea[1].transform.childCount + OpponentArea[2].transform.childCount + OpponentArea[3].transform.childCount + PlayerArea[0].transform.childCount + PlayerArea[1].transform.childCount + PlayerArea[2].transform.childCount + PlayerArea[3].transform.childCount; ;
+           
+            clicked = true;
+        }
+        if (player1_turn == true)
+        {
+            backs[0].SetActive(false);
+            backs[1].SetActive(true);
+        }
+        else
+        {
+            backs[1].SetActive(false);
+            backs[0].SetActive(true);
+        }
     }
     public void MergeSprites(int _num, GameObject card)
     {
