@@ -1652,6 +1652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takenCards: []
+  player1CardPile: {fileID: 1093868094}
+  player2CardPile: {fileID: 425496238}
 --- !u!1 &430778168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takenCards: []
+  player1CardPile: {fileID: 0}
+  player2CardPile: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,6 +3568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takenCards: []
+  player1CardPile: {fileID: 0}
+  player2CardPile: {fileID: 0}
 --- !u!1 &1093868094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3716,6 +3722,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takenCards: []
+  player1CardPile: {fileID: 1093868094}
+  player2CardPile: {fileID: 425496238}
 --- !u!1 &1188298889
 GameObject:
   m_ObjectHideFlags: 0

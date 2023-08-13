@@ -87,7 +87,7 @@ public class DragDrop : MonoBehaviour
         */
 
     }
-    
+
     public void EndDrag()
     {
         transform.localScale = new Vector3(1, 1, 1);
@@ -97,44 +97,31 @@ public class DragDrop : MonoBehaviour
         {
             if (OnBoard && playerScript != null)
             {
-                playerScript.TakeCard(gameObject);
+                playerScript.TakeCard(gameObject, location);
             }
 
             if (location == 2) // Board location
             {
-                if (currentBoard.CompareTag("Player1Pile") && player1 != null)
+                foreach (Transform child in currentBoard.transform)
                 {
-                    player1.TakeCard(gameObject);
-                }
-                else if (currentBoard.CompareTag("Player2Pile") && player2 != null)
-                {
-                    player2.TakeCard(gameObject);
-                }
-            }
-            print(currentBoard.tag + " " +currentBoard.transform.childCount);
-            
-
-            // Check if the sum is valid and move the cards to player pile if needed
-            int boardIndex = GetBoardIndexFromTag(currentBoard.tag);
-            int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[boardIndex];
-            if (IsValidSum(sum))
-            {
-                print(boardIndex);
-                Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
-                foreach (Transform childTransform in childTransforms)
-                {
-                    DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                    DragDrop childDragDrop = child.GetComponent<DragDrop>();
                     if (childDragDrop != null)
                     {
-                        if (location == 1)
+                        if (currentBoard.CompareTag("Player1Pile") && player1 != null)
                         {
-                            player1.TakeCard(childDragDrop.gameObject);
+                            player1.TakeCard(childDragDrop.gameObject, location);
                         }
-                        else if (location == 3)
+                        else if (currentBoard.CompareTag("Player2Pile") && player2 != null)
                         {
-                            player2.TakeCard(childDragDrop.gameObject);
+                            player2.TakeCard(childDragDrop.gameObject, location);
                         }
                     }
+                }
+
+                // Clear the board after moving the cards
+                foreach (Transform child in currentBoard.transform)
+                {
+                    Destroy(child.gameObject);
                 }
             }
 
@@ -147,108 +134,233 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-    
+
+
+
 
 
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("In Trigger Method");
-       
-        if (location == 1|| location == 2|| location == 3)
+
+        if (location == 1 || location == 2 || location == 3)
         {
             if (other.CompareTag("Board1"))
             {
-                currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[0];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    
-                    print("Sum for Board1: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
+
                 }
+
             }
             else if (other.CompareTag("Board2"))
             {
-                currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[1];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    
-                    print("Sum for Board2: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
                 }
+
             }
             else if (other.CompareTag("Board3"))
             {
-                currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[2];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    
-                    print("Sum for Board3: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
+
                 }
+
+
+
             }
             else if (other.CompareTag("Board4"))
             {
-                    currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[3];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    print("Sum for Board4: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
                 }
 
             }
             else if (other.CompareTag("Board5"))
             {
-                currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[4];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    
-                    print("Sum for Board5: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
                 }
- 
+
             }
             else if (other.CompareTag("Board6"))
             {
-                currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[5];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    
-                    print("Sum for Board6: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
                 }
-   
+
 
             }
             else if (other.CompareTag("Board7"))
             {
-                currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[6];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    
-                    print("Sum for Board7: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
                 }
-    
+
             }
             else if (other.CompareTag("Board8"))
             {
-                currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
-                if (IsValidSum(sum))
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[7];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
-                    
-                    print("Sum for Board8: " + sum);
+                    currentBoard = other.gameObject;
+                    //print(boardIndex);
+                    Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                    foreach (Transform childTransform in childTransforms)
+                    {
+                        DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                        if (childDragDrop != null)
+                        {
+                            if (location == 1)
+                            {
+                                player1.TakeCard(childDragDrop.gameObject, location);
+                            }
+                            else if (location == 3)
+                            {
+                                player2.TakeCard(childDragDrop.gameObject, location);
+                            }
+                        }
+                    }
                 }
+
             }
-
-
-
             
         }
-        
-        
 
 
     }
@@ -257,7 +369,7 @@ public class DragDrop : MonoBehaviour
     {
         
     }
-
+    /*
     private bool IsValidSum(int sum)
     {
         int childCount = currentBoard.transform.childCount;
@@ -289,5 +401,5 @@ public class DragDrop : MonoBehaviour
 
         return -1; // Invalid tag
     }
-
+    */
 }
