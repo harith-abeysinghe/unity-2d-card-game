@@ -21,6 +21,9 @@ public class DrawCards : MonoBehaviour
     public bool clicked = false;
     public int all_cards;
 
+    public  int[] cardCount =new int[4];  // count of the both players cards 
+    public  int[] cardCount2 = new int[4];
+    public  bool isDrawing = false;
 
     public GameObject img;
     // Start is called before the first frame update
@@ -36,7 +39,29 @@ public class DrawCards : MonoBehaviour
     
     private void Update()
     {
-        for(int x=0; x < 8; x++)
+        for (int y = 0; y < 4; y++)  // for hide and show the cardDraw button
+        {
+
+            cardCount[y] = PlayerArea[y].transform.childCount;
+            cardCount2[y] = OpponentArea[y].transform.childCount;
+         
+        }
+        if (isDrawing)
+        {
+            gameObject.GetComponent<Button>().interactable = false;
+        }
+        else if ((cardCount2[0]== 0 && cardCount2[1] == 0 && cardCount2[2] == 0 && cardCount2[3] == 0 )|| (cardCount[0] == 0 && cardCount[1] == 0 && cardCount[2] == 0 && cardCount[3] == 0))
+        {
+
+            gameObject.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            gameObject.GetComponent<Button>().interactable = false;
+        }
+      
+
+        for (int x=0; x < 8; x++)
         {
             if(Board[x].transform.childCount!=0)
             {
@@ -49,16 +74,16 @@ public class DrawCards : MonoBehaviour
                 {
                     sum[x] = Board[x].transform.GetChild(0).GetComponent<DragDrop>().value+ Board[x].transform.GetChild(1).GetComponent<DragDrop>().value;
                 }
-
             }
             else
             {
                 sum[x] = 0;
             }
             //transform.SetParent(currentBoard.transform, false);
-         
-
         }
+
+    
+
         if (Input.GetMouseButtonUp(0))
         {
             clicked = false;
@@ -165,7 +190,9 @@ public class DrawCards : MonoBehaviour
     }
     public void OnClick()
     {
-        if(drawCount == 0)
+        isDrawing = true;
+        //gameObject.GetComponent<Button>().interactable = false;
+        if (drawCount == 0)
         {
             StartCoroutine(SpawnCardsWithDelay());
         }
@@ -174,6 +201,7 @@ public class DrawCards : MonoBehaviour
             StartCoroutine(SpawnCardsWithDelayType2());
         }
         drawCount++;
+        
     }
     private int RandomGenerator()
     {
@@ -221,7 +249,7 @@ public class DrawCards : MonoBehaviour
 
         }
         yield return new WaitForSeconds(cardSpawnDelay);
-
+        isDrawing = false;
     }
 
     private IEnumerator SpawnCardsWithDelayType2()  // only draw to players area
@@ -252,7 +280,7 @@ public class DrawCards : MonoBehaviour
 
         }
         yield return new WaitForSeconds(cardSpawnDelay);
-
+        isDrawing = false;
     }
 
 }

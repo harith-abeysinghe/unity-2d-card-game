@@ -534,6 +534,10 @@ MonoBehaviour:
   - {fileID: 582189134}
   clicked: 0
   all_cards: 0
+  cardCount: 00000000000000000000000000000000
+  cardCount2: 00000000000000000000000000000000
+  isDrawing: 0
+  img: {fileID: 0}
 --- !u!1 &162235002
 GameObject:
   m_ObjectHideFlags: 0
