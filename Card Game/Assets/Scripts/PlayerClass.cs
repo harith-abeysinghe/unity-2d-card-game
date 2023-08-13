@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerClass : MonoBehaviour
 {
     public List<GameObject> takenCards = new List<GameObject>();
 
@@ -11,4 +11,3 @@ public class Player : MonoBehaviour
         takenCards.Add(card);
     }
 }
-
