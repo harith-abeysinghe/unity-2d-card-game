@@ -33,6 +33,23 @@ public class DrawCards : MonoBehaviour
     
     private void Update()
     {
+        for(int x=0; x < 8; x++)
+        {
+            if(Board[x].transform.childCount!=0)
+            {
+                if(Board[x].transform.childCount == 1)
+                {
+                    sum[x] = Board[x].transform.GetChild(0).GetComponent<DragDrop>().value;
+                }
+
+                else if (Board[x].transform.childCount == 2)
+                {
+                    sum[x] = Board[x].transform.GetChild(0).GetComponent<DragDrop>().value+ Board[x].transform.GetChild(1).GetComponent<DragDrop>().value;
+                }
+
+            }
+
+        }
         if (Input.GetMouseButtonUp(0))
         {
             clicked = false;

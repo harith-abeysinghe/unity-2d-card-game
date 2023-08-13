@@ -9,6 +9,10 @@ TagManager:
   - Board2
   - Board3
   - Board4
+  - Board5
+  - Board6
+  - Board7
+  - Board8
   layers:
   - Default
   - TransparentFX
