@@ -20,6 +20,9 @@ public class DrawCards : MonoBehaviour
     public GameObject[] backs;
     public bool clicked = false;
     public int all_cards;
+
+
+    public GameObject img;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +51,12 @@ public class DrawCards : MonoBehaviour
                 }
 
             }
-
-            
+            else
+            {
+                sum[x] = 0;
+            }
+            //transform.SetParent(currentBoard.transform, false);
+         
 
         }
         if (Input.GetMouseButtonUp(0))
