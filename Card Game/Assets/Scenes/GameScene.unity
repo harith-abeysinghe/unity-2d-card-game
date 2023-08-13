@@ -5881,11 +5881,11 @@ RectTransform:
   - {fileID: 425496239}
   - {fileID: 1093868095}
   - {fileID: 1899495926}
-  - {fileID: 238373070}
   - {fileID: 1541980602}
   - {fileID: 347340467}
   - {fileID: 773672970}
   - {fileID: 447514272}
+  - {fileID: 238373070}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

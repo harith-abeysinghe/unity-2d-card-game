@@ -53,18 +53,73 @@ public class DrawCards : MonoBehaviour
         }
         for(int y = 0; y < 8; y++)
         {
-            if(sum[y] == 11 && Board[y].transform.childCount==2)
+            if (Board[y].transform.childCount == 2 && sum[y] == 22)
             {
-                if(player1_turn == 1)
+              
+             
+                for (int z = 0; z < 8; z++)
+                {
+
+                    if (player1_turn == 1)
+                    {
+
+                        if (Board[z].transform.childCount == 1)
+                        {
+                  
+                            Board[z].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                        }
+                        else if(player1_turn == 2)
+                        {
+                            Board[z].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
+                            Board[z].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                        }
+                        
+                    }
+                    else if (player1_turn == 2)
+                    {
+                        if (Board[z].transform.childCount == 1)
+                        {
+
+                            Board[z].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                        }
+                        else if (player1_turn == 2)
+                        {
+                            Board[z].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
+                            Board[z].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                        }
+                     
+                    }
+                }
+                if (player1_turn == 1)
                 {
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
                 }
-                else if(player1_turn == 2)
+                else if (player1_turn == 2)
                 {
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
                 }
+
+            }
+            else if (Board[y].transform.childCount == 2 && sum[y] == 11 )
+            {
+                if(Board[y].transform.GetChild(0).GetComponent<DragDrop>().value != Board[y].transform.GetChild(1).GetComponent<DragDrop>().value)
+                {
+                    print("11111");
+                    if (player1_turn == 1)
+                    {
+                        Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
+                        Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                    }
+                    else if (player1_turn == 2)
+                    {
+                        Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
+                        Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                    }
+                }
+                //StartCoroutine("delay");
+               
 
             }
             else if(sum[y] == 11 && Board[y].transform.childCount == 3)
@@ -84,24 +139,7 @@ public class DrawCards : MonoBehaviour
 
         
             }
-            else if (Board[y].transform.childCount == 2 && sum[y] == 22)
-            {
-                for (int z = 0; z < 8; z++)
-                {
-                    if (player1_turn == 1)
-                    {
-                        Board[z].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
-                        Board[z].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
-                    }
-                    else if (player1_turn == 2)
-                    {
-                        Board[z].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
-                        Board[z].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
-                    }
-                }
-
-
-            }
+           
             else if(Board[y].transform.childCount == 2 && sum[y] == 24)
             {
                 if (player1_turn == 1)
@@ -355,7 +393,10 @@ public class DrawCards : MonoBehaviour
         GameObject.Find("Main Camera").GetComponent<Timer>().start = true;
         turns[1].SetActive(true);
     }
-
+    private IEnumerator delay()
+    {
+        yield return new WaitForSeconds(1);
+    }
     private IEnumerator SpawnCardsWithDelayType2()  // only draw to players area
     {
         for (int i = 0; i < 4; i++)
