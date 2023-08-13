@@ -100,6 +100,9 @@ public class DrawCards : MonoBehaviour
             backs[1].SetActive(false);
             backs[0].SetActive(false);
         }
+
+
+       
     }
     public void MergeSprites(int _num, GameObject card)
     {
@@ -194,10 +197,12 @@ public class DrawCards : MonoBehaviour
             
             MergeSprites(num, boardCard);
             //last[i] = boardCard.GetComponent<DragDrop>().value;
-            //sum[i] = boardCard.GetComponent<DragDrop>().value;
+            sum[i] = boardCard.GetComponent<DragDrop>().value;
 
         }   
         yield return new WaitForSeconds(cardSpawnDelay);
+
+        
         for (int i = 0; i < 4; i++){
             int num = RandomGenerator();
             GameObject opponentCard = Instantiate(cards[num], new Vector3(0, 0, 0), Quaternion.identity);

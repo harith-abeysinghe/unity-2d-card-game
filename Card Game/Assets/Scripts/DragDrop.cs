@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,6 +41,23 @@ public class DragDrop : MonoBehaviour
             transform.position = mousePosition;
             transform.SetParent(Canvas.transform, true);
         }
+        /*
+        for (int i = 0; i < 8; i++)
+        {
+            int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[i];
+            if (sum == 11)
+            {
+                if (location == 1)
+                {
+                    player1.TakeCard(gameObject);
+                }
+                else if (location == 3)
+                {
+                    player2.TakeCard(gameObject);
+                }
+            }
+        }
+        */
     }
 
     public void StartDrag()
@@ -108,6 +126,7 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum==0 ||  sum + value == 22|| sum + value == 24|| sum +value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
 
                 }
 
@@ -118,6 +137,7 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
                 }
 
             }
@@ -127,6 +147,7 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
 
                 }
            
@@ -139,6 +160,7 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
                 }
 
             }
@@ -148,6 +170,7 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
                 }
  
             }
@@ -157,6 +180,7 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
                 }
    
 
@@ -167,6 +191,7 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
                 }
     
             }
@@ -176,11 +201,14 @@ public class DragDrop : MonoBehaviour
                 if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+                    Debug.Log("Sum for Board1: " + sum);
                 }
-      
             }
+            
         }
-     
+        
+        
+
 
     }
 
