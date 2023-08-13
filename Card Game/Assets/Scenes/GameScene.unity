@@ -1533,10 +1533,9 @@ GameObject:
   m_Component:
   - component: {fileID: 425496239}
   - component: {fileID: 425496242}
-  - component: {fileID: 425496241}
   - component: {fileID: 425496240}
-  - component: {fileID: 425496243}
   - component: {fileID: 425496244}
+  - component: {fileID: 425496245}
   m_Layer: 5
   m_Name: Player2Pile
   m_TagString: Untagged
@@ -1587,36 +1586,6 @@ MonoBehaviour:
   m_Spacing: {x: 13.8, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &425496241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425496238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &425496242
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1625,19 +1594,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425496238}
   m_CullTransparentMesh: 1
---- !u!114 &425496243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425496238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  takenCards: []
 --- !u!61 &425496244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1683,6 +1639,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 108.590485, y: 114.83193}
   m_EdgeRadius: 0
+--- !u!114 &425496245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425496238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takenCards: []
 --- !u!1 &430778168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,6 +1791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 440636847}
+  - component: {fileID: 440636848}
   m_Layer: 5
   m_Name: player1 (2)
   m_TagString: Untagged
@@ -1852,6 +1822,19 @@ RectTransform:
   m_AnchoredPosition: {x: 10.47, y: -335}
   m_SizeDelta: {x: 712.71, y: 258.77}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &440636848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440636846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takenCards: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3448,6 +3431,7 @@ GameObject:
   - component: {fileID: 1079565277}
   - component: {fileID: 1079565276}
   - component: {fileID: 1079565275}
+  - component: {fileID: 1079565278}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3505,6 +3489,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1079565278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079565274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65e5c67e7efa884585c7c25cd91fb9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+  value: 0
+  location: 0
+  img: {fileID: 0}
+  OnBoard: 0
+  last_temp: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player1Pile: {fileID: 1093868094}
+  player2Pile: {fileID: 425496238}
 --- !u!1 &1082214299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,6 +3520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1082214300}
+  - component: {fileID: 1082214301}
   m_Layer: 5
   m_Name: player1
   m_TagString: Untagged
@@ -3544,6 +3551,19 @@ RectTransform:
   m_AnchoredPosition: {x: 10.47, y: 415}
   m_SizeDelta: {x: 712.71, y: 258.77}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1082214301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082214299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takenCards: []
 --- !u!1 &1093868094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,10 +3574,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1093868095}
   - component: {fileID: 1093868098}
-  - component: {fileID: 1093868097}
   - component: {fileID: 1093868096}
-  - component: {fileID: 1093868099}
   - component: {fileID: 1093868100}
+  - component: {fileID: 1093868101}
+  - component: {fileID: 1093868102}
   m_Layer: 5
   m_Name: Player1Pile
   m_TagString: Untagged
@@ -3608,36 +3628,6 @@ MonoBehaviour:
   m_Spacing: {x: 13.8, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &1093868097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093868094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1093868098
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3646,19 +3636,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093868094}
   m_CullTransparentMesh: 1
---- !u!114 &1093868099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093868094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  takenCards: []
 --- !u!61 &1093868100
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3704,6 +3681,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 98.24855, y: 120.848526}
   m_EdgeRadius: 0
+--- !u!114 &1093868101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093868094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65e5c67e7efa884585c7c25cd91fb9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+  value: 0
+  location: 0
+  img: {fileID: 0}
+  OnBoard: 0
+  last_temp: 
+  player1: {fileID: 1082214301}
+  player2: {fileID: 440636848}
+  player1Pile: {fileID: 1093868094}
+  player2Pile: {fileID: 425496238}
+--- !u!114 &1093868102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093868094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takenCards: []
 --- !u!1 &1188298889
 GameObject:
   m_ObjectHideFlags: 0

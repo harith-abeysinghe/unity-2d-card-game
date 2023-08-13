@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,8 +32,8 @@ public class DragDrop : MonoBehaviour
     }
     private void Start()
     {
-        player1 = GameObject.Find("Player1Pile").GetComponent<Player_Class>();
-        player2 = GameObject.Find("Player2Pile").GetComponent<Player_Class>();
+        player1 = GameObject.Find("player1 (2)").GetComponent<Player_Class>();
+        player2 = GameObject.Find("player1").GetComponent<Player_Class>();
         player1Pile = GameObject.Find("Player1Pile");
         player2Pile = GameObject.Find("Player2Pile");
     }
@@ -88,7 +87,7 @@ public class DragDrop : MonoBehaviour
         */
 
     }
-
+    
     public void EndDrag()
     {
         transform.localScale = new Vector3(1, 1, 1);
@@ -112,6 +111,31 @@ public class DragDrop : MonoBehaviour
                     player2.TakeCard(gameObject);
                 }
             }
+            //Debug.Log(currentBoard.tag);
+
+            // Check if the sum is valid and move the cards to player pile if needed
+            int boardIndex = GetBoardIndexFromTag(currentBoard.tag);
+            int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[boardIndex];
+            if (IsValidSum(sum))
+            {
+                //Debug.Log(boardIndex);
+                Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
+                foreach (Transform childTransform in childTransforms)
+                {
+                    DragDrop childDragDrop = childTransform.GetComponent<DragDrop>();
+                    if (childDragDrop != null)
+                    {
+                        if (location == 1)
+                        {
+                            player1.TakeCard(childDragDrop.gameObject);
+                        }
+                        else if (location == 3)
+                        {
+                            player2.TakeCard(childDragDrop.gameObject);
+                        }
+                    }
+                }
+            }
 
             transform.SetParent(currentBoard.transform, false);
         }
@@ -122,6 +146,9 @@ public class DragDrop : MonoBehaviour
         }
     }
 
+    
+
+
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -131,42 +158,39 @@ public class DragDrop : MonoBehaviour
         {
             if (other.CompareTag("Board1"))
             {
+                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[0];
-                if (sum + value == 11 || sum==0 ||  sum + value == 22|| sum + value == 24|| sum +value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board1: " + sum);
-
                 }
-
             }
             else if (other.CompareTag("Board2"))
             {
+                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[1];
-                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board2: " + sum);
                 }
-
             }
             else if (other.CompareTag("Board3"))
             {
+                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[2];
-                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board3: " + sum);
-
                 }
-           
-
-
             }
             else if (other.CompareTag("Board4"))
             {
+                    currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[3];
-                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board4: " + sum);
@@ -175,8 +199,9 @@ public class DragDrop : MonoBehaviour
             }
             else if (other.CompareTag("Board5"))
             {
+                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[4];
-                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board5: " + sum);
@@ -185,8 +210,9 @@ public class DragDrop : MonoBehaviour
             }
             else if (other.CompareTag("Board6"))
             {
+                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[5];
-                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board6: " + sum);
@@ -196,8 +222,9 @@ public class DragDrop : MonoBehaviour
             }
             else if (other.CompareTag("Board7"))
             {
+                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[6];
-                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board7: " + sum);
@@ -206,8 +233,9 @@ public class DragDrop : MonoBehaviour
             }
             else if (other.CompareTag("Board8"))
             {
+                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[7];
-                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                if (IsValidSum(sum))
                 {
                     currentBoard = other.gameObject;
                     Debug.Log("Sum for Board8: " + sum);
@@ -229,5 +257,58 @@ public class DragDrop : MonoBehaviour
         
     }
 
-   
+    private bool IsValidSum(int sum)
+    {
+        int childCount = currentBoard.transform.childCount;
+
+        if (sum == 11 && childCount > 1)
+        {
+            return true;
+        }
+        else if (sum == 22 || sum == 24 || sum == 26)
+        {
+            int cardValueToMatch = 11; // For sum 22
+            if (sum == 24)
+            {
+                cardValueToMatch = 12; // For sum 24
+            }
+            else if (sum == 26)
+            {
+                cardValueToMatch = 13; // For sum 26
+            }
+
+            int matchingChildCount = 0;
+            foreach (Transform child in currentBoard.transform)
+            {
+                DragDrop childDragDrop = child.GetComponent<DragDrop>();
+                if (childDragDrop != null && childDragDrop.value == cardValueToMatch)
+                {
+                    matchingChildCount++;
+                }
+            }
+
+            return matchingChildCount == 2;
+        }
+
+        return false;
+    }
+
+
+    private int GetBoardIndexFromTag(string tag)
+    {
+        switch (tag)
+        {
+            case "Board1": return 0;
+            case "Board2": return 1;
+            case "Board3": return 2;
+            case "Board4": return 3;
+            case "Board5": return 4;
+            case "Board6": return 5;
+            case "Board7": return 6;
+            case "Board8": return 7;
+
+            default: return -1; // Invalid tag
+        }
+    }
+
 }
