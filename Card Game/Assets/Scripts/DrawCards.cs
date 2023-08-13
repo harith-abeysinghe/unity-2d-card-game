@@ -84,7 +84,24 @@ public class DrawCards : MonoBehaviour
 
         
             }
+            else if (Board[y].transform.childCount == 2 && sum[y] == 22)
+            {
+                for (int z = 0; z < 8; z++)
+                {
+                    if (player1_turn == 1)
+                    {
+                        Board[z].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
+                        Board[z].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                    }
+                    else if (player1_turn == 2)
+                    {
+                        Board[z].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
+                        Board[z].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                    }
+                }
 
+
+            }
             else if(Board[y].transform.childCount == 2 && sum[y] == 24)
             {
                 if (player1_turn == 1)
