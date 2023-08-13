@@ -16,9 +16,9 @@ public class DragDrop : MonoBehaviour
     public bool OnBoard = false;
     public int[] last_temp;
 
-    private PlayerClass playerScript;
-    public PlayerClass player1;
-    public PlayerClass player2;
+    private Player_Class playerScript;
+    public Player_Class player1;
+    public Player_Class player2;
 
     public int player1PileLocation = 4; // Location for player 1's pile
     public int player2PileLocation = 5; // Location for player 2's pile

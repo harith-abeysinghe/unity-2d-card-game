@@ -1175,8 +1175,9 @@ GameObject:
   - component: {fileID: 425496242}
   - component: {fileID: 425496241}
   - component: {fileID: 425496240}
+  - component: {fileID: 425496243}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Player2Pile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1198,8 +1199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.425, y: 642}
-  m_SizeDelta: {x: 740.5, y: 100}
+  m_AnchoredPosition: {x: -302.63, y: 645}
+  m_SizeDelta: {x: 86.51, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425496240
 MonoBehaviour:
@@ -1263,6 +1264,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425496238}
   m_CullTransparentMesh: 1
+--- !u!114 &425496243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425496238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takenCards: []
 --- !u!1 &430778168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3118,8 +3132,9 @@ GameObject:
   - component: {fileID: 1093868098}
   - component: {fileID: 1093868097}
   - component: {fileID: 1093868096}
+  - component: {fileID: 1093868099}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Player1Pile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3141,8 +3156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.425, y: -129}
-  m_SizeDelta: {x: 740.5, y: 100}
+  m_AnchoredPosition: {x: -322, y: -595}
+  m_SizeDelta: {x: 78.06, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093868096
 MonoBehaviour:
@@ -3206,6 +3221,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093868094}
   m_CullTransparentMesh: 1
+--- !u!114 &1093868099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093868094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42f9ae5f841284c9a2f4ebc38ee3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takenCards: []
 --- !u!1 &1188298889
 GameObject:
   m_ObjectHideFlags: 0
