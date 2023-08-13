@@ -29,6 +29,8 @@ public class DrawCards : MonoBehaviour
 
     public GameObject winSlot1;
     public GameObject winSlot2;
+
+    public GameObject[] turns;
     // Start is called before the first frame update
     void Start()
     {
@@ -168,11 +170,15 @@ public class DrawCards : MonoBehaviour
                 {
                     player1_turn = 2;
                     GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
+                    turns[1].SetActive(true);
+                    turns[0].SetActive(false);
                 }
                 else if(player1_turn == 2|| player1_turn == 0)
                 {
                     player1_turn = 1;
                     GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
+                    turns[0].SetActive(true);
+                    turns[1].SetActive(false);
                 }
               
             }
@@ -330,6 +336,7 @@ public class DrawCards : MonoBehaviour
         isDrawing = false;
         GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
         GameObject.Find("Main Camera").GetComponent<Timer>().start = true;
+        turns[1].SetActive(true);
     }
 
     private IEnumerator SpawnCardsWithDelayType2()  // only draw to players area
@@ -361,7 +368,7 @@ public class DrawCards : MonoBehaviour
         }
         yield return new WaitForSeconds(cardSpawnDelay);
         isDrawing = false;
-        
+     
     }
 
 }
