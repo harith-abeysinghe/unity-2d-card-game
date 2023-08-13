@@ -13,7 +13,7 @@ public class DragDrop : MonoBehaviour
     public int value;
     public int location = 0;  //1= player1, 2= board, 3= player2 
     public Image img;
-   
+    public bool OnBoard = false;
     public int[] last_temp;
 
     
@@ -37,13 +37,15 @@ public class DragDrop : MonoBehaviour
 
     public void StartDrag()
     {
-        startParent = transform.parent.gameObject;
-        startPosition = transform.position;
-        isDragging = true;
-        last_temp[0] = GameObject.Find("pack").GetComponent<DrawCards>().last[0];
-        last_temp[1] = GameObject.Find("pack").GetComponent<DrawCards>().last[1];
-        last_temp[2] = GameObject.Find("pack").GetComponent<DrawCards>().last[2];
-        last_temp[3] = GameObject.Find("pack").GetComponent<DrawCards>().last[3];
+        if (OnBoard ==false) 
+        {
+            startParent = transform.parent.gameObject;
+            startPosition = transform.position;
+            isDragging = true;
+    
+
+        }
+      
     }
 
     public void EndDrag()
@@ -69,50 +71,104 @@ public class DragDrop : MonoBehaviour
         {
             if (other.CompareTag("Board1"))
             {
-                if(value<= last_temp[0] || GameObject.Find("pack").GetComponent<DrawCards>().sum[0]==0)
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[0];
+                if (sum + value == 11 || sum==0 ||  sum + value == 22|| sum + value == 24|| sum +value == 26)
                 {
                     currentBoard = other.gameObject;
+
                 }
                
                 GameObject.Find("pack").GetComponent<DrawCards>().sum[0] += value;
-                GameObject.Find("pack").GetComponent<DrawCards>().last[0] = value;
+              
 
             }
             else if (other.CompareTag("Board2"))
             {
-                if (value <= last_temp[1] || GameObject.Find("pack").GetComponent<DrawCards>().sum[1]==0)
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[1];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
                 }
-                //currentBoard = other.gameObject;
+                
                 GameObject.Find("pack").GetComponent<DrawCards>().sum[1] += value;
 
-                GameObject.Find("pack").GetComponent<DrawCards>().last[1] = value;
+                
 
             }
             else if (other.CompareTag("Board3"))
             {
-                if (value <= last_temp[2]|| GameObject.Find("pack").GetComponent<DrawCards>().sum[2]==0)
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[2];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
+
                 }
                 //currentBoard = other.gameObject;
                 GameObject.Find("pack").GetComponent<DrawCards>().sum[2] += value;
 
-                GameObject.Find("pack").GetComponent<DrawCards>().last[2] = value;
+    
 
             }
             else if (other.CompareTag("Board4"))
             {
-                if (value <= last_temp[3]|| GameObject.Find("pack").GetComponent<DrawCards>().sum[3]==0)
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[3];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
                 {
                     currentBoard = other.gameObject;
                 }
                 //currentBoard = other.gameObject;
                 GameObject.Find("pack").GetComponent<DrawCards>().sum[3] += value;
 
-                GameObject.Find("pack").GetComponent<DrawCards>().last[3] = value;
+                
 
+            }
+            else if (other.CompareTag("Board5"))
+            {
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[4];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                {
+                    currentBoard = other.gameObject;
+                }
+                //currentBoard = other.gameObject;
+                GameObject.Find("pack").GetComponent<DrawCards>().sum[4] += value;
+
+               
+            }
+            else if (other.CompareTag("Board6"))
+            {
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[5];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                {
+                    currentBoard = other.gameObject;
+                }
+                //currentBoard = other.gameObject;
+                GameObject.Find("pack").GetComponent<DrawCards>().sum[5] += value;
+
+                
+            }
+            else if (other.CompareTag("Board7"))
+            {
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[6];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                {
+                    currentBoard = other.gameObject;
+                }
+                //currentBoard = other.gameObject;
+                GameObject.Find("pack").GetComponent<DrawCards>().sum[6] += value;
+
+               
+            }
+            else if (other.CompareTag("Board8"))
+            {
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[7];
+                if (sum + value == 11 || sum == 0 || sum + value == 22 || sum + value == 24 || sum + value == 26)
+                {
+                    currentBoard = other.gameObject;
+                }
+                //currentBoard = other.gameObject;
+                GameObject.Find("pack").GetComponent<DrawCards>().sum[7] += value;
+
+               
             }
         }
      
@@ -125,25 +181,48 @@ public class DragDrop : MonoBehaviour
         {
             currentBoard = null;
             GameObject.Find("pack").GetComponent<DrawCards>().sum[0] -= value;
-            GameObject.Find("pack").GetComponent<DrawCards>().last[0] = last_temp[0];
+        
         }
         else if (other.CompareTag("Board2"))
         {
             currentBoard = null;
             GameObject.Find("pack").GetComponent<DrawCards>().sum[1] -= value;
-            GameObject.Find("pack").GetComponent<DrawCards>().last[1] = last_temp[1];
+        
         }
         else if (other.CompareTag("Board3"))
         {
             currentBoard = null;
             GameObject.Find("pack").GetComponent<DrawCards>().sum[2] -= value;
-            GameObject.Find("pack").GetComponent<DrawCards>().last[2] = last_temp[2];
+
         }
         else if (other.CompareTag("Board4"))
         {
             currentBoard = null;
             GameObject.Find("pack").GetComponent<DrawCards>().sum[3] -= value;
-            GameObject.Find("pack").GetComponent<DrawCards>().last[3] = last_temp[3];
+            
+        }
+
+
+
+        else if (other.CompareTag("Board5"))
+        {
+            currentBoard = null;
+            GameObject.Find("pack").GetComponent<DrawCards>().sum[4] -= value;
+        }
+        else if (other.CompareTag("Board6"))
+        {
+            currentBoard = null;
+            GameObject.Find("pack").GetComponent<DrawCards>().sum[5] -= value;
+        }
+        else if (other.CompareTag("Board7"))
+        {
+            currentBoard = null;
+            GameObject.Find("pack").GetComponent<DrawCards>().sum[6] -= value;
+        }
+        else if (other.CompareTag("Board8"))
+        {
+            currentBoard = null;
+            GameObject.Find("pack").GetComponent<DrawCards>().sum[7] -= value;
         }
     }
 }

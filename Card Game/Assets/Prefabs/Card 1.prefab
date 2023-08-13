@@ -96,8 +96,8 @@ MonoBehaviour:
   value: 0
   location: 0
   img: {fileID: 0}
-  clicked: 0
-  last_temp: 00000000000000000000000000000000
+  OnBoard: 0
+  last_temp: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &5940137113580418057
 MonoBehaviour:
   m_ObjectHideFlags: 0

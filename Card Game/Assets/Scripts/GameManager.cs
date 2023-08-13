@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/*
 public class GameManager : MonoBehaviour
 {
     private Player currentPlayer; // Reference to the currently active player
@@ -46,3 +46,4 @@ public class GameManager : MonoBehaviour
 }
 
 }
+*/
