@@ -12,4 +12,9 @@ public class ChangeScene : MonoBehaviour
     public void Quit(){
         Application.Quit();
     }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

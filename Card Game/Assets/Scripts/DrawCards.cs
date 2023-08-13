@@ -93,10 +93,12 @@ public class DrawCards : MonoBehaviour
                 if (player1_turn == 1|| player1_turn == 0)
                 {
                     player1_turn = 2;
+                    GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
                 }
                 else if(player1_turn == 2|| player1_turn == 0)
                 {
                     player1_turn = 1;
+                    GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
                 }
               
             }
@@ -114,11 +116,13 @@ public class DrawCards : MonoBehaviour
         {
             backs[0].SetActive(false);
             backs[1].SetActive(true);
+            
         }
         else if(player1_turn == 2)
         {
             backs[1].SetActive(false);
             backs[0].SetActive(true);
+            //GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
         }
         else
         {
@@ -250,6 +254,8 @@ public class DrawCards : MonoBehaviour
         }
         yield return new WaitForSeconds(cardSpawnDelay);
         isDrawing = false;
+        GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
+        GameObject.Find("Main Camera").GetComponent<Timer>().start = true;
     }
 
     private IEnumerator SpawnCardsWithDelayType2()  // only draw to players area
@@ -281,6 +287,7 @@ public class DrawCards : MonoBehaviour
         }
         yield return new WaitForSeconds(cardSpawnDelay);
         isDrawing = false;
+        
     }
 
 }
