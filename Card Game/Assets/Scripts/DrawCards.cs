@@ -14,7 +14,7 @@ public class DrawCards : MonoBehaviour
     //public GameObject[] slot1, slot2, slot3, slot4;
     public List<int> _clubs, _diamonds, _hearts, _spades;  // all shared cards
     List <GameObject> cards = new List <GameObject> ();
-    private int speed;
+    private int drawCount = 0;
 
     public int player1_turn = 0;
     public GameObject[] backs;
@@ -165,7 +165,15 @@ public class DrawCards : MonoBehaviour
     }
     public void OnClick()
     {
-        StartCoroutine(SpawnCardsWithDelay());
+        if(drawCount == 0)
+        {
+            StartCoroutine(SpawnCardsWithDelay());
+        }
+        else if (drawCount > 0)
+        {
+            StartCoroutine(SpawnCardsWithDelayType2());
+        }
+        drawCount++;
     }
     private int RandomGenerator()
     {
@@ -204,6 +212,37 @@ public class DrawCards : MonoBehaviour
 
         
         for (int i = 0; i < 4; i++){
+            int num = RandomGenerator();
+            GameObject opponentCard = Instantiate(cards[num], new Vector3(0, 0, 0), Quaternion.identity);
+            opponentCard.GetComponent<DragDrop>().location = 3;
+            opponentCard.transform.SetParent(OpponentArea[i].transform, false);
+
+            MergeSprites(num, opponentCard);
+
+        }
+        yield return new WaitForSeconds(cardSpawnDelay);
+
+    }
+
+    private IEnumerator SpawnCardsWithDelayType2()  // only draw to players area
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            int num = RandomGenerator();
+            GameObject playerCard = Instantiate(cards[num], new Vector3(0, 0, 0), Quaternion.identity);
+
+
+            playerCard.GetComponent<DragDrop>().location = 1;
+            playerCard.transform.SetParent(PlayerArea[i].transform, false);
+            MergeSprites(num, playerCard);
+        }
+        player1_turn = 2;
+        yield return new WaitForSeconds(cardSpawnDelay);
+
+   
+
+        for (int i = 0; i < 4; i++)
+        {
             int num = RandomGenerator();
             GameObject opponentCard = Instantiate(cards[num], new Vector3(0, 0, 0), Quaternion.identity);
             opponentCard.GetComponent<DragDrop>().location = 3;
