@@ -111,14 +111,15 @@ public class DragDrop : MonoBehaviour
                     player2.TakeCard(gameObject);
                 }
             }
-            //Debug.Log(currentBoard.tag);
+            print(currentBoard.tag + " " +currentBoard.transform.childCount);
+            
 
             // Check if the sum is valid and move the cards to player pile if needed
             int boardIndex = GetBoardIndexFromTag(currentBoard.tag);
             int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[boardIndex];
             if (IsValidSum(sum))
             {
-                //Debug.Log(boardIndex);
+                print(boardIndex);
                 Transform[] childTransforms = currentBoard.GetComponentsInChildren<Transform>();
                 foreach (Transform childTransform in childTransforms)
                 {
@@ -162,8 +163,8 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[0];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board1: " + sum);
+                    
+                    print("Sum for Board1: " + sum);
                 }
             }
             else if (other.CompareTag("Board2"))
@@ -172,8 +173,8 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[1];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board2: " + sum);
+                    
+                    print("Sum for Board2: " + sum);
                 }
             }
             else if (other.CompareTag("Board3"))
@@ -182,8 +183,8 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[2];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board3: " + sum);
+                    
+                    print("Sum for Board3: " + sum);
                 }
             }
             else if (other.CompareTag("Board4"))
@@ -192,8 +193,7 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[3];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board4: " + sum);
+                    print("Sum for Board4: " + sum);
                 }
 
             }
@@ -203,8 +203,8 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[4];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board5: " + sum);
+                    
+                    print("Sum for Board5: " + sum);
                 }
  
             }
@@ -214,8 +214,8 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[5];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board6: " + sum);
+                    
+                    print("Sum for Board6: " + sum);
                 }
    
 
@@ -226,8 +226,8 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[6];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board7: " + sum);
+                    
+                    print("Sum for Board7: " + sum);
                 }
     
             }
@@ -237,8 +237,8 @@ public class DragDrop : MonoBehaviour
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[7];
                 if (IsValidSum(sum))
                 {
-                    currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board8: " + sum);
+                    
+                    print("Sum for Board8: " + sum);
                 }
             }
 
@@ -259,10 +259,13 @@ public class DragDrop : MonoBehaviour
 
     private bool IsValidSum(int sum)
     {
+        print("In Method");
         int childCount = currentBoard.transform.childCount;
+        print("InSum " + childCount);
 
         if (sum == 11 && childCount > 1)
         {
+            print("TRUE");
             return true;
         }
         else if (sum == 22 || sum == 24 || sum == 26)
@@ -286,29 +289,26 @@ public class DragDrop : MonoBehaviour
                     matchingChildCount++;
                 }
             }
-
+            print("TRUE");
             return matchingChildCount == 2;
         }
-
+        print("FaLSE");
         return false;
     }
 
 
     private int GetBoardIndexFromTag(string tag)
     {
-        switch (tag)
-        {
-            case "Board1": return 0;
-            case "Board2": return 1;
-            case "Board3": return 2;
-            case "Board4": return 3;
-            case "Board5": return 4;
-            case "Board6": return 5;
-            case "Board7": return 6;
-            case "Board8": return 7;
+        if (tag == "Board1") return 0;
+        if (tag == "Board2") return 1;
+        if (tag == "Board3") return 2;
+        if (tag == "Board4") return 3;
+        if (tag == "Board5") return 4;
+        if (tag == "Board6") return 5;
+        if (tag == "Board7") return 6;
+        if (tag == "Board8") return 7;
 
-            default: return -1; // Invalid tag
-        }
+        return -1; // Invalid tag
     }
 
 }
