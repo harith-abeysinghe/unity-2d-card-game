@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DragDrop : MonoBehaviour
 {
@@ -17,16 +16,8 @@ public class DragDrop : MonoBehaviour
     public bool OnBoard = false;
     public int[] last_temp;
 
-    private PlayerClass playerScript;
-    public PlayerClass player1;
-    public PlayerClass player2;
-
-    public int player1PileLocation = 4; // Location for player 1's pile
-    public int player2PileLocation = 5; // Location for player 2's pile
-
-
-
-
+    
+    
 
     private void Awake()
     {
@@ -48,22 +39,13 @@ public class DragDrop : MonoBehaviour
     {
         if (OnBoard ==false) 
         {
-            playerScript = transform.parent.GetComponent<PlayerClass>();
             startParent = transform.parent.gameObject;
             startPosition = transform.position;
             isDragging = true;
     
 
         }
-
-        if (OnBoard == true)
-        {
-            // Set the starting parent and position for the dragged card
-            startParent = transform.parent.gameObject;
-            startPosition = transform.position;
-            isDragging = true;
-        }
-
+      
     }
 
     public void EndDrag()
@@ -71,25 +53,8 @@ public class DragDrop : MonoBehaviour
         transform.localScale = new Vector3(1, 1, 1);
         isDragging = false;
 
-        if (currentBoard != null)
+        if (currentBoard != null )
         {
-            if (OnBoard && playerScript != null)
-            {
-                playerScript.TakeCard(gameObject); // Assuming the TakeCard method is implemented in PlayerClass
-            }
-
-            // Check if the card is being dropped onto a player's pile
-            if (location == player1PileLocation && currentBoard.CompareTag("Player1Pile"))
-            {
-                // Call TakeCard on PlayerClass for player 1
-                player1.TakeCard(gameObject);
-            }
-            else if (location == player2PileLocation && currentBoard.CompareTag("Player2Pile"))
-            {
-                // Call TakeCard on PlayerClass for player 2
-                player2.TakeCard(gameObject);
-            }
-
             transform.SetParent(currentBoard.transform, false);
         }
         else
@@ -98,7 +63,6 @@ public class DragDrop : MonoBehaviour
             transform.SetParent(startParent.transform, false);
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
