@@ -25,7 +25,7 @@ public class DrawCards : MonoBehaviour
     public  int[] cardCount2 = new int[4];
     public  bool isDrawing = false;
 
-    public GameObject img;
+    public Sprite backImg;
 
     public GameObject winSlot1;
     public GameObject winSlot2;
@@ -65,13 +65,17 @@ public class DrawCards : MonoBehaviour
 
                         if (Board[z].transform.childCount == 1)
                         {
-                  
+                            Board[z].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
                             Board[z].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                     
                         }
-                        else if(player1_turn == 2)
+                        else if(Board[z].transform.childCount == 2)
                         {
+                            Board[z].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                            Board[z].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                             Board[z].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
                             Board[z].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                         
                         }
                         
                     }
@@ -79,26 +83,36 @@ public class DrawCards : MonoBehaviour
                     {
                         if (Board[z].transform.childCount == 1)
                         {
-
+                            Board[z].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
                             Board[z].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                       
                         }
-                        else if (player1_turn == 2)
+                        else if (Board[z].transform.childCount == 2)
                         {
+                            Board[z].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
+                            Board[z].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
                             Board[z].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
                             Board[z].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+  
                         }
                      
                     }
                 }
                 if (player1_turn == 1)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+     
                 }
                 else if (player1_turn == 2)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+
                 }
 
             }
@@ -106,16 +120,22 @@ public class DrawCards : MonoBehaviour
             {
                 if(Board[y].transform.GetChild(0).GetComponent<DragDrop>().value != Board[y].transform.GetChild(1).GetComponent<DragDrop>().value)
                 {
-                    print("11111");
+                    
                     if (player1_turn == 1)
                     {
+                        Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                        Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                         Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
                         Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+       
                     }
                     else if (player1_turn == 2)
                     {
+                        Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                        Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                         Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
                         Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                  
                     }
                 }
                 //StartCoroutine("delay");
@@ -126,15 +146,23 @@ public class DrawCards : MonoBehaviour
             {
                 if (player1_turn == 1)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(2).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(2).transform.SetParent(winSlot1.transform, false);
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+             
                 }
                 else if (player1_turn == 2)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(2).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(2).transform.SetParent(winSlot2.transform, false);
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                
                 }
 
         
@@ -144,13 +172,19 @@ public class DrawCards : MonoBehaviour
             {
                 if (player1_turn == 1)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+
                 }
                 else if (player1_turn == 2)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+        
                 }
         
 
@@ -159,14 +193,20 @@ public class DrawCards : MonoBehaviour
             {
                 if (player1_turn == 1)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+            
 
                 }
                 else if (player1_turn == 2)
                 {
+                    Board[y].transform.GetChild(0).GetComponent<Image>().sprite = backImg;
+                    Board[y].transform.GetChild(1).GetComponent<Image>().sprite = backImg;
                     Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
                     Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+             
                 }
               
             }
@@ -225,15 +265,13 @@ public class DrawCards : MonoBehaviour
                 {
                     player1_turn = 2;
                     GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
-                    turns[1].SetActive(true);
-                    turns[0].SetActive(false);
+                 
                 }
                 else if(player1_turn == 2|| player1_turn == 0)
                 {
                     player1_turn = 1;
                     GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
-                    turns[0].SetActive(true);
-                    turns[1].SetActive(false);
+                
                 }
               
             }
@@ -251,12 +289,16 @@ public class DrawCards : MonoBehaviour
         {
             backs[0].SetActive(false);
             backs[1].SetActive(true);
-            
+            turns[0].SetActive(true);
+            turns[1].SetActive(false);
         }
         else if(player1_turn == 2)
         {
+
             backs[1].SetActive(false);
             backs[0].SetActive(true);
+            turns[1].SetActive(true);
+            turns[0].SetActive(false);
             //GameObject.Find("Main Camera").GetComponent<Timer>().resetTime();
         }
         else
