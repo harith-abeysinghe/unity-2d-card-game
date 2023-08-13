@@ -146,111 +146,96 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-    
+
 
 
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       
-        if (location == 1|| location == 2|| location == 3)
+
+        if (location == 1 || location == 2 || location == 3)
         {
             if (other.CompareTag("Board1"))
             {
-                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[0];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value<11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board1: " + sum);
+
                 }
+
             }
             else if (other.CompareTag("Board2"))
             {
-                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[1];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value < 11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board2: " + sum);
                 }
+
             }
             else if (other.CompareTag("Board3"))
             {
-                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[2];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value < 11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board3: " + sum);
+
                 }
+
             }
             else if (other.CompareTag("Board4"))
             {
-                    currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[3];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value < 11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board4: " + sum);
                 }
 
             }
             else if (other.CompareTag("Board5"))
             {
-                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[4];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value < 11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board5: " + sum);
                 }
- 
+
             }
             else if (other.CompareTag("Board6"))
             {
-                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[5];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value < 11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board6: " + sum);
                 }
-   
+
 
             }
             else if (other.CompareTag("Board7"))
             {
-                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[6];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value < 11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board7: " + sum);
                 }
-    
+
             }
             else if (other.CompareTag("Board8"))
             {
-                currentBoard = other.gameObject;
                 int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[7];
-                if (IsValidSum(sum))
+                if (sum + value == 11 || sum == 0 || sum + value == 22 && sum == value || sum + value == 24 && sum == value || sum + value == 26 && sum == value || sum + value < 11)
                 {
                     currentBoard = other.gameObject;
-                    Debug.Log("Sum for Board8: " + sum);
                 }
+
             }
-
-
-
-            
         }
-        
-        
 
 
     }
+   
 
     private void OnTriggerExit2D(Collider2D other)
     {

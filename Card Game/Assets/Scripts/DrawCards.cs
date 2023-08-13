@@ -26,6 +26,9 @@ public class DrawCards : MonoBehaviour
     public  bool isDrawing = false;
 
     public GameObject img;
+
+    public GameObject winSlot1;
+    public GameObject winSlot2;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,73 @@ public class DrawCards : MonoBehaviour
             cardCount2[y] = OpponentArea[y].transform.childCount;
          
         }
+        for(int y = 0; y < 8; y++)
+        {
+            if(sum[y] == 11 && Board[y].transform.childCount==2)
+            {
+                if(player1_turn == 1)
+                {
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                }
+                else if(player1_turn == 2)
+                {
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                }
+
+            }
+            else if(sum[y] == 11 && Board[y].transform.childCount == 3)
+            {
+                if (player1_turn == 1)
+                {
+                    Board[y].transform.GetChild(2).transform.SetParent(winSlot1.transform, false);
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                }
+                else if (player1_turn == 2)
+                {
+                    Board[y].transform.GetChild(2).transform.SetParent(winSlot2.transform, false);
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                }
+
+        
+            }
+
+            else if(Board[y].transform.childCount == 2 && sum[y] == 24)
+            {
+                if (player1_turn == 1)
+                {
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+                }
+                else if (player1_turn == 2)
+                {
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                }
+        
+
+            }
+            else if(Board[y].transform.childCount == 2 && sum[y] == 26)
+            {
+                if (player1_turn == 1)
+                {
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot1.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot1.transform, false);
+
+                }
+                else if (player1_turn == 2)
+                {
+                    Board[y].transform.GetChild(1).transform.SetParent(winSlot2.transform, false);
+                    Board[y].transform.GetChild(0).transform.SetParent(winSlot2.transform, false);
+                }
+              
+            }
+          
+        }
+
         if (isDrawing)
         {
             gameObject.GetComponent<Button>().interactable = false;
@@ -73,6 +143,10 @@ public class DrawCards : MonoBehaviour
                 else if (Board[x].transform.childCount == 2)
                 {
                     sum[x] = Board[x].transform.GetChild(0).GetComponent<DragDrop>().value+ Board[x].transform.GetChild(1).GetComponent<DragDrop>().value;
+                }
+                else if (Board[x].transform.childCount == 3)
+                {
+                    sum[x] = Board[x].transform.GetChild(0).GetComponent<DragDrop>().value + Board[x].transform.GetChild(1).GetComponent<DragDrop>().value + Board[x].transform.GetChild(2).GetComponent<DragDrop>().value;
                 }
             }
             else

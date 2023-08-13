@@ -13,6 +13,8 @@ TagManager:
   - Board6
   - Board7
   - Board8
+  - Player2Pile
+  - Player1Pile
   layers:
   - Default
   - TransparentFX
