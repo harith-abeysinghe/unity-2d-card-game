@@ -31,6 +31,13 @@ public class DragDrop : MonoBehaviour
     {
         Canvas = GameObject.Find("Main Canvas");
     }
+    private void Start()
+    {
+        player1 = GameObject.Find("Player1Pile").GetComponent<Player_Class>();
+        player2 = GameObject.Find("Player2Pile").GetComponent<Player_Class>();
+        player1Pile = GameObject.Find("Player1Pile");
+        player2Pile = GameObject.Find("Player2Pile");
+    }
     void Update()
     {
       
