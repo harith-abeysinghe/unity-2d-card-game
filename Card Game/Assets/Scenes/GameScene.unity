@@ -1943,8 +1943,8 @@ MonoBehaviour:
   timeOut: 0
   finalTime: 
   timeText: {fileID: 1899495927}
+  seconds: 0
   start: 0
-  timeOutPanel: {fileID: 238373069}
 --- !u!1 &559908738
 GameObject:
   m_ObjectHideFlags: 0

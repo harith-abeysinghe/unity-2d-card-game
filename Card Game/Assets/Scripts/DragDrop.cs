@@ -154,14 +154,13 @@ public class DragDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("In Trigger Method");
        
         if (location == 1|| location == 2|| location == 3)
         {
             if (other.CompareTag("Board1"))
             {
                 currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[0];
                 if (IsValidSum(sum))
                 {
                     
@@ -171,7 +170,7 @@ public class DragDrop : MonoBehaviour
             else if (other.CompareTag("Board2"))
             {
                 currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[1];
                 if (IsValidSum(sum))
                 {
                     
@@ -181,7 +180,7 @@ public class DragDrop : MonoBehaviour
             else if (other.CompareTag("Board3"))
             {
                 currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[2];
                 if (IsValidSum(sum))
                 {
                     
@@ -191,7 +190,7 @@ public class DragDrop : MonoBehaviour
             else if (other.CompareTag("Board4"))
             {
                     currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[3];
                 if (IsValidSum(sum))
                 {
                     print("Sum for Board4: " + sum);
@@ -201,7 +200,7 @@ public class DragDrop : MonoBehaviour
             else if (other.CompareTag("Board5"))
             {
                 currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[4];
                 if (IsValidSum(sum))
                 {
                     
@@ -212,7 +211,7 @@ public class DragDrop : MonoBehaviour
             else if (other.CompareTag("Board6"))
             {
                 currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[5];
                 if (IsValidSum(sum))
                 {
                     
@@ -224,7 +223,7 @@ public class DragDrop : MonoBehaviour
             else if (other.CompareTag("Board7"))
             {
                 currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[6];
                 if (IsValidSum(sum))
                 {
                     
@@ -235,7 +234,7 @@ public class DragDrop : MonoBehaviour
             else if (other.CompareTag("Board8"))
             {
                 currentBoard = other.gameObject;
-                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[GetBoardIndexFromTag(currentBoard.tag)];
+                int sum = GameObject.Find("pack").GetComponent<DrawCards>().sum[7];
                 if (IsValidSum(sum))
                 {
                     
@@ -260,20 +259,42 @@ public class DragDrop : MonoBehaviour
 
     private bool IsValidSum(int sum)
     {
+        print("In Method");
         int childCount = currentBoard.transform.childCount;
+        print("InSum " + childCount);
 
         if (sum == 11 && childCount > 1)
         {
+            print("TRUE");
             return true;
         }
-        else if ((sum == 22 || sum == 24 || sum == 26) && value == (sum/2))
+        else if (sum == 22 || sum == 24 || sum == 26)
         {
-            return childCount == 2;
-        }
+            int cardValueToMatch = 11; // For sum 22
+            if (sum == 24)
+            {
+                cardValueToMatch = 12; // For sum 24
+            }
+            else if (sum == 26)
+            {
+                cardValueToMatch = 13; // For sum 26
+            }
 
+            int matchingChildCount = 0;
+            foreach (Transform child in currentBoard.transform)
+            {
+                DragDrop childDragDrop = child.GetComponent<DragDrop>();
+                if (childDragDrop != null && childDragDrop.value == cardValueToMatch)
+                {
+                    matchingChildCount++;
+                }
+            }
+            print("TRUE");
+            return matchingChildCount == 2;
+        }
+        print("FaLSE");
         return false;
     }
-
 
 
     private int GetBoardIndexFromTag(string tag)
